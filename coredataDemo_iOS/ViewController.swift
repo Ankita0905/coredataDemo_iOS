@@ -26,11 +26,11 @@ class ViewController: UIViewController {
         
         //3rd step write into context
 //        let newUser = NSEntityDescription.insertNewObject(forEntityName: "User", into: context)
-//        newUser.setValue("Ankita", forKey: "name")
+//        newUser.setValue("Honey", forKey: "name")
 //        newUser.setValue(6477799604, forKey: "phone")
-//        newUser.setValue("ankita.jain12342@gmail.com", forKey: "email")
+//        newUser.setValue("honey.jain12342@gmail.ca", forKey: "email")
 //        newUser.setValue(25, forKey: "age")
-//        
+//
 //        //4th step - save context
 //        do{
 //            try context.save()
@@ -40,9 +40,12 @@ class ViewController: UIViewController {
 //        {
 //            print(error)
 //        }
-//        
+
         //fetch data and load it
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+       //request.predicate = NSPredicate(format: "email contains %@", ".com")
+       // request.predicate = NSPredicate(format: "name=%@", "Honey")
+        request.returnsObjectsAsFaults = false
         
         //find our data
         do{
@@ -51,9 +54,41 @@ class ViewController: UIViewController {
             {
                 for result in results as! [NSManagedObject]
                 {
-                    if let name = result.value(forKey: "name")
+//                    if let name = result.value(forKey: "name")
+//                    {
+//                        print(name)
+//                    }
+//                    if let email = result.value(forKey: "email")
+//                    {
+//                        print(email)
+//                        // update the email
+//                        let email = email as! String
+//
+//                        //update core data
+//                        result.setValue(email.replacingOccurrences(of: ".ca", with: ".com"), forKey: "email")
+//                        do{
+//                                    try context.save()
+//                                    print(result, "is saved")
+//                                }
+//                                catch
+//                                {
+//                                    print(error)
+//                                }
+                    //delete the user
+                    if let name =  result.value(forKey: "name")
                     {
+//                        context.delete(result)
+//                        do{
+//                            try context.save()
+//                            print(result, "is saved")
+//                        }
+//                        catch
+//                        {
+//                        print(error)
+//                        }
+                        
                         print(name)
+                    
                     }
                 }
             }
